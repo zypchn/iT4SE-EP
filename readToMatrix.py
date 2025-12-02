@@ -15,23 +15,24 @@ def readToMatrix(filename,name):
                     pssm.append(overall_vec[:42])
         pssm=np.array(pssm)
         if name == 'pssm':
-            return pssm[:, 2:22].astype(np.float)  #
+            return pssm[:, 2:22].astype(np.float64)  #
         elif name == 'psfm':
-            return pssm[:, 22:42].astype(np.float)  #
+            return pssm[:, 22:42].astype(np.float64)  #
         elif name == 'pssmAndLabels':
-            return pssm[:, 2:22].astype(np.float), pssm[:, 1]  #
+            return pssm[:, 2:22].astype(np.float64), pssm[:, 1]  #
         elif name == 'psfmAndLabels':
-            return pssm[:, 22:42].astype(np.float), pssm[:, 1]  #
+            return pssm[:, 22:42].astype(np.float64), pssm[:, 1]  #
 
 #
 def autoNorm(matrix,name):
     if name=="pssm":
-        matrix=matrix.astype(np.float)
+        matrix=matrix.astype(np.float64)
         matrix = 1 / (1 + np.exp(0 - matrix))
     elif name=="psfm":
-        matrix=matrix.astype(np.float)
+        matrix=matrix.astype(np.float64)
         matrix = matrix / 100
     return matrix
+
 
 
 
